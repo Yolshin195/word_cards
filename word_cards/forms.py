@@ -20,3 +20,7 @@ class WordCardForm(forms.ModelForm):
             'back': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': '3'})
         }
+
+    def clean_front(self):
+        front = self.cleaned_data.get('front')
+        return front.lower() if front else front
