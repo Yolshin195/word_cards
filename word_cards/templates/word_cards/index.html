@@ -1,0 +1,56 @@
+{% extends 'word_cards/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<main class="container mt-3">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">{% trans 'Word cards' %}</li>
+        </ol>
+    </nav>
+
+    <form>
+        <div class="input-group">
+            <input type="text"
+                   name="{{ filter_form.front.name }}"
+                   value="{{ filter_form.front.value|default_if_none:'' }}"
+                   class="form-control"
+                   id="{{ filter_form.front.id_for_label }}"
+                   placeholder="{{ filter_form.front.field.widget.attrs.placeholder }}" />
+            <button type="submit" class="btn btn-outline-success"><i class="bi bi-search"></i> Search</button>
+        </div>
+    </form>
+
+    <table class="table mt-3">
+        <thead>
+        <tr>
+            <th scope="col">
+                <a href="{% url 'word_card_create' %}" class="text-success-emphasis">
+                    <i class="bi bi-plus-circle"></i>
+                </a>
+            </th>
+            <th scope="col">{% trans 'Front' %}</th>
+            <th scope="col">{% trans 'Back' %}</th>
+            <th scope="col">{% trans 'Actions' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if word_cards %}
+        {% for word_card in word_cards %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{word_card.front}}</td>
+            <td>{{word_card.back}}</td>
+            <td>
+                <a href="{% url 'word_card_detail' word_card.id %}"><i
+                        class="bi bi-eye text-primary-emphasis"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+</main>
+{% endblock %}
