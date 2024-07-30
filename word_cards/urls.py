@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     # ex: /polls/
-    path("", views.index, name="index"),
+    path("", views.index, name="word_card_index"),
     path("update/<int:pk>", views.update, name="word_card_update"),
     path("update/", views.update, name="word_card_create"),
     # ex: /polls/5/

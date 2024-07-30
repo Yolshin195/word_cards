@@ -46,8 +46,17 @@ def detail(request, pk=None):
 
 
 def delete(request, pk=None):
-    context = {
+    if pk is None:
+        return redirect('word_card_index')
 
+    word_card = get_object_or_404(WordCard, pk=pk)
+    if request.POST:
+        word_card.delete()
+        return redirect('word_card_index')
+
+    form = WordCardForm(instance=word_card)
+    context = {
+        'form': form
     }
     return render(request, "word_cards/delete.html", context)
 

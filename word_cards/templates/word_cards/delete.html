@@ -3,6 +3,24 @@
 
 {% block content %}
 <main class="container mt-3">
-    <p>Delete</p>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">{% trans 'Word cards' %}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{% trans 'Delete' %}</li>
+        </ol>
+    </nav>
+
+    <div class="card">
+        <form class="card-body" method="post">
+            <h5 class="card-title">{{ form.title }}</h5>
+            {% csrf_token %}
+            <fieldset disabled>
+            {{ form.as_p }}
+            </fieldset>
+            <button type="submit" class="card-link btn btn-outline-danger"><i class="bi bi-trash"></i> {% trans 'Delete' %}</button>
+        </form>
+    </div>
+
 </main>
 {% endblock %}
