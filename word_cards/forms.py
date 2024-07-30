@@ -14,8 +14,9 @@ class WordCardFilterForm(forms.Form):
 class WordCardForm(forms.ModelForm):
     class Meta:
         model = WordCard
-        fields = ['front', 'back']
+        fields = ['front', 'back', 'description']
         widgets = {
             'front': forms.TextInput(attrs={'class': 'form-control'}),
             'back': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': '3'})
         }

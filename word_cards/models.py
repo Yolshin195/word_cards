@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 class WordCard(models.Model):
     front: str = models.CharField(max_length=255, unique=True)
     back: str = models.CharField(max_length=255, blank=True)
+    description: str = models.TextField(blank=True)
 
 
 class UsageExample(models.Model):

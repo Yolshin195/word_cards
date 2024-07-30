@@ -56,5 +56,6 @@ def translate(request, pk=None):
     word_card = get_object_or_404(WordCard, pk=pk)
     parse_result = parse_word(word=word_card.front)
     word_card.back = parse_result.translate
+    word_card.description = parse_result.description
     word_card.save()
     return redirect('word_card_detail', pk=word_card.id)
