@@ -6,7 +6,7 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">{% trans 'Word cards' %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'word_card_index' %}">{% trans 'Word cards' %}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{% trans 'Details' %}</li>
         </ol>
     </nav>
@@ -17,9 +17,12 @@
             <h5 class="card-title">{{ word_card.front }}</h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">{{ word_card.back }}</h6>
             <p class="card-text">{{ word_card.description }}</p>
-            <a href="{% url 'word_card_update' word_card.id %}" class="card-link btn btn-outline-primary"><i class="bi bi-pencil"></i></a>
-            <a href="{% url 'word_card_translate' word_card.id %}" class="card-link btn btn-outline-primary"><i class="bi bi-translate"></i></a>
-            <a href="{% url 'word_card_delete' word_card.id %}" class="card-link btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+            <a href="{% url 'word_card_update' word_card.id %}" class="card-link btn btn-outline-primary"><i
+                    class="bi bi-pencil"></i></a>
+            <a href="{% url 'word_card_translate' word_card.id %}" class="card-link btn btn-outline-primary"><i
+                    class="bi bi-translate"></i></a>
+            <a href="{% url 'word_card_delete' word_card.id %}" class="card-link btn btn-outline-danger"><i
+                    class="bi bi-trash"></i></a>
         </div>
     </div>
     {% endif %}

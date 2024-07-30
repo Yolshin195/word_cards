@@ -6,8 +6,13 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">{% trans 'Word cards' %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'word_card_index' %}">{% trans 'Word cards' %}</a></li>
+            {% if form.instance.pk %}
+            <li class="breadcrumb-item"><a href="{% url 'word_card_detail' form.instance.pk %}">{% trans 'Detail' %}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{% trans 'Edit' %}</li>
+            {% else %}
+            <li class="breadcrumb-item active" aria-current="page">{% trans 'Create' %}</li>
+            {% endif %}
         </ol>
     </nav>
 
