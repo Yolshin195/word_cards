@@ -17,7 +17,7 @@
     </nav>
 
     <div class="card">
-        <form class="card-body" method="post">
+        <form class="card-body" method="post" enctype="multipart/form-data">
             <h5 class="card-title">{{ form.title }}</h5>
             {% csrf_token %}
             {{ form.as_p }}

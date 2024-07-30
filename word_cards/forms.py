@@ -14,11 +14,12 @@ class WordCardFilterForm(forms.Form):
 class WordCardForm(forms.ModelForm):
     class Meta:
         model = WordCard
-        fields = ['front', 'back', 'description']
+        fields = ['front', 'back', 'description', 'image']
         widgets = {
             'front': forms.TextInput(attrs={'class': 'form-control'}),
             'back': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': '3'})
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': '3'}),
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
         }
 
     def clean_front(self):

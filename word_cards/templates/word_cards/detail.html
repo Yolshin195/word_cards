@@ -13,6 +13,9 @@
 
     {% if word_card %}
     <div class="card">
+        {% if word_card.image %}
+        <img src="{{ word_card.image.url }}" class="card-img-top" alt="{% trans 'Image' %}">
+        {% endif %}
         <div class="card-body">
             <h5 class="card-title">{{ word_card.front|capfirst }}</h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">{{ word_card.back|capfirst }}</h6>

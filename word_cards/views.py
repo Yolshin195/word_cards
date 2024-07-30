@@ -22,9 +22,9 @@ def index(request):
 def update(request, pk=None):
     if pk:
         word_card = get_object_or_404(WordCard, pk=pk)
-        form = WordCardForm(request.POST or None, instance=word_card)
+        form = WordCardForm(request.POST or None, request.FILES or None, instance=word_card)
     else:
-        form = WordCardForm(request.POST or None)
+        form = WordCardForm(request.POST or None, request.FILES or None)
 
     if request.POST:
         if form.is_valid():
