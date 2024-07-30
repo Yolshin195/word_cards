@@ -11,4 +11,5 @@ urlpatterns = [
     path("detail/<int:pk>", views.detail, name="word_card_detail"),
     # ex: /polls/5/vote/
     path("delete/<int:pk>", views.delete, name="word_card_delete"),
+    path("translate/<int:pk>", views.translate, name="word_card_translate")
 ]

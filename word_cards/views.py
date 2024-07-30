@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import WordCardForm, WordCardFilterForm
 from .models import WordCard
+from .services import parse_word
 
 
 def index(request):
@@ -49,3 +50,11 @@ def delete(request, pk=None):
 
     }
     return render(request, "word_cards/delete.html", context)
+
+
+def translate(request, pk=None):
+    word_card = get_object_or_404(WordCard, pk=pk)
+    parse_result = parse_word(word=word_card.front)
+    word_card.back = parse_result.translate
+    word_card.save()
+    return redirect('word_card_detail', pk=word_card.id)
